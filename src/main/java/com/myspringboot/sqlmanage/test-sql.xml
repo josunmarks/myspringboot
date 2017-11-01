@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+	<select id="querydatalist" sqlgroup="test">
+		select 1 from dual
+		<where>
+			<isNotEmpty property="name">
+				name=#{name}
+			</isNotEmpty>
+			<isEmpty property="type">
+				(type is null or type = '')
+			</isEmpty>
+		</where>
+	</select>
+	<delete id="deleteByid" sqlgroup="test">
+		delete from sys_t_dicelement where 0 > 1
+	</delete>
+	
+	<update id="update" sqlgroup="test">
+		update sys_t_dicelement
+		<set>
+			<isNotEmpty property="name">
+				name=#{name},
+			</isNotEmpty>
+			<isNotEmpty property="code">
+				code=#{code}
+			</isNotEmpty>
+		</set>
+		where id = #{id} and elementcode = #{element}
+	</update>
+	
+	
+	
+</sqls>
